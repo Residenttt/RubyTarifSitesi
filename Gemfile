@@ -8,7 +8,7 @@ gem 'rails', '~> 6.1.1'
 gem 'bootstrap', '~> 5.0.0.beta1'
 gem 'jquery-rails'
 # Use mysql as the database for Active Record
-gem 'mysql2', '~> 0.5'
+
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
@@ -36,6 +36,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'mysql2', '~> 0.5'
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 4.1.0'
   # Display performance information such as SQL time and flame graphs for each request in your browser.
@@ -43,6 +44,9 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
 end
 
+group :production do
+  gem 'pg'
+end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 3.26'
