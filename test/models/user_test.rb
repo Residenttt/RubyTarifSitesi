@@ -7,7 +7,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "user testi" do
-    assert @user.valid?
+    assert_not @user.valid?
   end
 
   test "username girilmis olmali" do
@@ -23,7 +23,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
   test "email mi kontrolü" do
-    gecerli_emails = %w[deneme@gmail.com test@yahoo.com bomba@hotmail.com deneme@example.com]
+    gecerli_emails = %w[deneme@gmail.com testo@yahoo.com bomba@hotmail.com deneme@example.com]
     gecerli_emails.each do |gecerli|
       @user.email = gecerli
       assert @user.valid?, "#{gecerli.inspect} gerçerli"

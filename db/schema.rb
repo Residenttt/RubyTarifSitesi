@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_19_153435) do
+ActiveRecord::Schema.define(version: 2021_01_19_164439) do
 
   create_table "tariflers", charset: "utf8", collation: "utf8_turkish_ci", force: :cascade do |t|
     t.string "isim"
     t.text "aciklama"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_id"
   end
 
   create_table "users", charset: "utf8", collation: "utf8_turkish_ci", force: :cascade do |t|
