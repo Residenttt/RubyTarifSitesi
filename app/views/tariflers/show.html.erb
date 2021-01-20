@@ -1,0 +1,18 @@
+<%= render 'ortak/page_title', baslik: @tarifler.isim %>
+
+<div align="center" class="col-md-offset-3" ><h3><b>Yapılış ve malzemeler:</b></h3><br>
+
+  <%= simple_format(@tarifler.aciklama) %>
+
+  <br><br><p align="center" "><b>Yazar:</b> <%= @tarifler.user.username %></p>
+  <p align="center"><%= link_to gravatar_for(@tarifler.user), tariflers_path %></p>
+  <div class="float-md-end">Paylaşılma tarihi <%= time_ago_in_words(@tarifler.created_at) %>
+    <%= link_to "Tüm Tarifleri Gör", tariflers_path, class: "btn btn-info" %>
+  </div>
+  <br>
+  <div class="float-md-start">
+    <%= link_to "Tarifi düzenle", edit_tarifler_path(@tarifler), class: "btn btn-dark" %>
+    <%= link_to "Tarifi Sil", tarifler_path(@tarifler), method: :delete, data: { confirm: "Silmek istediğinize emin misiniz?"}, class: "btn btn-danger" %>
+  </div>
+
+</div>

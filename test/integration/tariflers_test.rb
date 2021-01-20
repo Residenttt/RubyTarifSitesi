@@ -21,4 +21,12 @@ class TariflersTest < ActionDispatch::IntegrationTest
     assert_match @tarif2.isim, response.body
   end
 
+  test "tarif görüntüleme sayfası" do
+    get tarif_path(@tarif)
+    assert_template 'tariflers/show'
+    assert_match @tarif.isim, response.body
+    assert_match @tarif.aciklama, response.body
+    assert_match @user.username, response.body
+  end
+
 end

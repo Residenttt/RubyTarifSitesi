@@ -1,0 +1,11 @@
+<% if hata.errors.any? %>
+  <div class="row"><b><h5>
+    <%= pluralize(hata.errors.count, "Error") %>
+    <br>
+    <%= hata.class %> oluşturulurken meydana gelen hatalar:
+  </b></h5>
+    <ul><%= hata.errors.full_messages.each do |msj| %>
+        <li><%= msj %></li>
+      <% end %></ul>
+  </div>
+<% end %>

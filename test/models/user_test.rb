@@ -22,13 +22,7 @@ class UserTest < ActiveSupport::TestCase
     @user.email  = " "
     assert_not @user.valid?
   end
-  test "email mi kontrolü" do
-    gecerli_emails = %w[deneme@gmail.com testo@yahoo.com bomba@hotmail.com deneme@example.com]
-    gecerli_emails.each do |gecerli|
-      @user.email = gecerli
-      assert @user.valid?, "#{gecerli.inspect} gerçerli"
-    end
-  end
+
   test "gecersiz email kontrolü" do
     gecersiz_emails = %w[bomba.s@hotmail deneme@gmail,com test@yahoo deneme@exa+mple.com]
     gecersiz_emails.each do |gecersiz|
@@ -46,11 +40,6 @@ class UserTest < ActiveSupport::TestCase
     @user.save
     assert duplicate_email.valid?
   end
-  test "emaili kücük karakter kaydetme" do
-    büyüklükücüklü_email = "dENEme@Gmail.com"
-    @user.email = büyüklükücüklü_email
-    @user.save
-    assert_equal büyüklükücüklü_email.downcase, @user.reload.email
-  end
+
 
 end

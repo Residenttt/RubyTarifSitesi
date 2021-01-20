@@ -1,14 +1,13 @@
-<h1 align="center">Tüm Tarifler</h1>
-<hr>
+<%= render 'ortak/page_title', baslik: "Tarifler" %>
 <% @tariflers.each do |tarifler| %>
   <div class="row" align="center">
     <div class="col-md-2">
-      <section class="center">
-
+      <section class="yazar center">
+        <%= gravatar_for(tarifler.user, size:100) %>
       </section>
     </div>
     <div class="col-md-8 well">
-      <h5><%= tarifler.isim %></h5>
+      <h5><%= link_to tarifler.isim, tarifler_path(tarifler) %></h5>
       <p><%= truncate(tarifler.aciklama, length: 100) %></p>
       <p><span class="quiet"><small><b>Paylaşım Tarihi:</b> <%= time_ago_in_words(tarifler.created_at) %></small></span></p>
     </div>

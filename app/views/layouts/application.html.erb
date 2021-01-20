@@ -13,6 +13,9 @@
   <body>
 
   <%= render 'layouts/navbar' %>
+  <% flash.each do |isim, msj| %>
+    <%= msj %>
+  <% end %>
   <br><br><br>
   <div class="container">
     <%= yield %>

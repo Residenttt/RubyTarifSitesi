@@ -1,0 +1,34 @@
+<%= render 'ortak/hata', hata: @tarifler %>
+
+<div class="row" align="center">
+  <div class="col-md-10">
+    <%= form_for(@tarifler, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label "Tarifin Adı" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.text_field :isim, class: "form-control", placeholder: "Tarifinizin başlığını giriniz.", autofocus: true %>
+        </div>
+        <br>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label "Malzemeler ve Tarif" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.text_area :aciklama, rows:10, class:"form-control", placeholder: "Tarifinizi ve malzemeleri giriniz." %>
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+          <%= f.submit class: "btn btn-primary btn-xlarge" %>
+        </div>
+      </div>
+    <% end %>
+    <br><div class="col-md-4 col-md-offset-4 renkk"><b>
+    <%= link_to "Tarifler Listesine Geri Dön", tariflers_path %>
+  </b></div>
+  </div>
+</div>
