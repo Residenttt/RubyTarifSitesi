@@ -7,7 +7,7 @@ ruby '2.5.8'
 gem 'rails', '~> 6.1.1'
 gem 'bootstrap', '~> 5.0.0.beta1'
 gem 'jquery-rails'
-# Use mysql as the database for Active Record
+gem 'pagy'
 
 # Use Puma as the app server
 gem 'puma', '~> 5.0'

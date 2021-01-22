@@ -1,8 +1,9 @@
 class TariflersController < ApplicationController
+  include Pagy::Backend
   before_action :tarif_bul, only: [:show, :edit, :update]
 
   def index
-    @tariflers = Tarifler.all
+    @pagy, @tariflers = pagy(Tarifler.all, items: 10)
   end
 
   def new
