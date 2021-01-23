@@ -1,0 +1,11 @@
+<%= render 'ortak/page_title', baslik:"#{@user.username} Profili" %>
+
+<div class="row">
+  <div align="center">
+    <%= gravatar_for @user, size: 125 %>
+  </div>
+</div>
+<br>
+<h3 align="center"><%= @user.username %>'in Tarifleri</h3>
+<hr>
+<%= render '/tariflers/tarifler', obj: @user.tariflers %>

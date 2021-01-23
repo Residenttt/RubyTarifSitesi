@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-md-10">
+    <%= form_for(@user, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+      <div class="form-group">
+        <b><div class="control-label col-md-2">
+          <%= f.label :username, "Kullanıcı Adı" %>
+        </div>
+          <div class="col-md-8">
+            <%= f.text_field :username, class: "form-control", placeholder: "Kullanıcı Adınızı giriniz.", autofocus: true %>
+          </div>
+          <br>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :email %>
+        </div>
+        <div class="col-md-8">
+          <%= f.email_field :email, class:"form-control", placeholder: "E-posta adresinizi giriniz." %>
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :password, "Şifre" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.password_field :password, class: "form-control", placeholder: "Şifrenizi giriniz." %>
+        </div>
+        <br>
+      </div>
+      <div class="form-group">
+        <div class="control-label col-md-2">
+          <%= f.label :password_confirmation, "Şifre Kontrol" %>
+        </div>
+        <div class="col-md-8">
+          <%= f.password_field :password_confirmation, class:"form-control", placeholder: "Tekrar şifrenizi giriniz." %>
+        </div>
+      </div>
+      <br>
+      <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+          <%= f.submit(@user.new_record? ? "Kayıt ol" : "Profili Güncelle", class: "btn btn-primary btn-xlarge") %>
+        </div>
+      </div></b>
+    <% end %>
+    <br>
+  </div>
+</div>

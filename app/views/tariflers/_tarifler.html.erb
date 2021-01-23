@@ -1,0 +1,28 @@
+<div class="row gy-4" align="center">
+<% obj.each do |tarifler| %>
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+          <div class="col-md-2">
+            <section class="yazar">
+              <%= gravatar_for(tarifler.user, size:100) %>
+            </section>
+          </div>
+          <div class="col-md-8 well">
+            <h5><%= link_to tarifler.isim, tarifler_path(tarifler) %></h5>
+            <p><%= truncate(tarifler.aciklama, length: 100) %></p>
+            <p><span class="quiet"><small><b>Paylaşım Tarihi:</b> <%= time_ago_in_words(tarifler.created_at) %></small></span></p>
+            <% if logged_in? && current_user == tarifler.user %>
+              <div class="col-auto">
+                <%= link_to "Tarifi düzenle", edit_tarifler_path(tarifler), class: "btn btn-info" %>
+                <%= link_to "Tarifi Sil", tarifler_path(tarifler), method: :delete, data: { confirm: "Silmek istediğinize emin misiniz?"}, class: "btn btn-danger" %>
+              </div>
+            <% end %>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<% end %>
+</div>
