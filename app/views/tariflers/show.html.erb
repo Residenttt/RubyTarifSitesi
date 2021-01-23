@@ -30,7 +30,7 @@
   <div class="col-auto">
     <%= link_to "Tüm Tarifleri Gör", tariflers_path, class: "btn btn-info" %>
   </div>
-  <% if logged_in? && current_user == @tarifler.user %>
+  <% if logged_in? && (current_user == @tarifler.user || current_user.admin?) %>
   <div class="col-auto">
     <%= link_to "Tarifi düzenle", edit_tarifler_path(@tarifler), class: "btn btn-dark" %>
     <%= link_to "Tarifi Sil", tarifler_path(@tarifler), method: :delete, data: { confirm: "Silmek istediğinize emin misiniz?"}, class: "btn btn-danger" %>

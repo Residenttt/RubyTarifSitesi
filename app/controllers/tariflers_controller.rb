@@ -53,7 +53,7 @@ class TariflersController < ApplicationController
   end
 
   def require_same_user
-    if current_user != @tarifler.user
+    if current_user != @tarifler.user && !current_user.admin?
       redirect_to tariflers_path
 
     end

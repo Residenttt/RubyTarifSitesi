@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_22_181050) do
+ActiveRecord::Schema.define(version: 2021_01_23_210823) do
 
   create_table "tariflers", charset: "utf8", collation: "utf8_turkish_ci", force: :cascade do |t|
     t.string "isim"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2021_01_22_181050) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
+    t.boolean "admin", default: false
   end
 
 end

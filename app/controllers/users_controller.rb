@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   include Pagy::Backend
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_admin, only: [:destroy]
 
   def index
     @pagy, @users = pagy(User.all, items: 10)
@@ -36,9 +37,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    flash[:danger] = "Üye silindi!"
-    redirect_to users_path
+    if !@user.admin?
+      @user.destroy
+      redirect_to users_path
+    end
   end
 
     private
@@ -51,8 +53,14 @@ class UsersController < ApplicationController
       end
 
       def require_same_user
-        if current_user != @user
+        if current_user != @user && !current_user.admin?
           redirect_to users_path
+        end
+      end
+
+      def require_admin
+        if logged_in? && !current_user.admin?
+          redirect_to root_path
         end
       end
 
