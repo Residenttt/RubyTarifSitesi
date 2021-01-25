@@ -6,4 +6,5 @@ class Tarifler < ApplicationRecord
   default_scope -> {order(updated_at: :desc)}
   has_many :tarif_malzemes
   has_many :malzemes, through: :tarif_malzemes
+  has_many :yorumlars, dependent: :destroy
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_25_191048) do
+ActiveRecord::Schema.define(version: 2021_01_25_191846) do
 
   create_table "malzemes", charset: "utf8", collation: "utf8_turkish_ci", force: :cascade do |t|
     t.string "name"
@@ -36,6 +36,14 @@ ActiveRecord::Schema.define(version: 2021_01_25_191048) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
     t.boolean "admin", default: false
+  end
+
+  create_table "yorumlars", charset: "utf8", collation: "utf8_turkish_ci", force: :cascade do |t|
+    t.text "aciklama"
+    t.integer "user_id"
+    t.integer "tarifler_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
 end
