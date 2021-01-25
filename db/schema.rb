@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_23_210823) do
+ActiveRecord::Schema.define(version: 2021_01_25_191048) do
+
+  create_table "malzemes", charset: "utf8", collation: "utf8_turkish_ci", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "tarif_malzemes", charset: "utf8", collation: "utf8_turkish_ci", force: :cascade do |t|
+    t.integer "tarifler_id"
+    t.integer "malzeme_id"
+  end
 
   create_table "tariflers", charset: "utf8", collation: "utf8_turkish_ci", force: :cascade do |t|
     t.string "isim"
