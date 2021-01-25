@@ -12,7 +12,7 @@
               <h5><%= link_to mlz.name.capitalize, malzeme_path(mlz) %></h5>
               <p><%= pluralize(mlz.tariflers.count, "Tarif") if mlz.tariflers %></p>
               <% if logged_in? && current_user.admin?%>
-                <li><%= link_to "Malzemeyi Düzenle", malzeme_path(mlz) %></li>
+                <li><%= link_to "Malzemeyi Düzenle", edit_malzeme_path(mlz) %></li>
               <% end %>
             </div>
           </div>
@@ -21,5 +21,8 @@
     </div>
   <% end %>
   <br>
+</div>
+<div class="d-flex justify-content-center">
+  <%= pagy_bootstrap_nav(@pagy).html_safe %>
 </div>
 

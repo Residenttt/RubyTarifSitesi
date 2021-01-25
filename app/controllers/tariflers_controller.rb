@@ -45,7 +45,7 @@ class TariflersController < ApplicationController
 
   private
     def tarifler_params
-      params.require(:tarifler).permit(:isim, :aciklama)
+      params.require(:tarifler).permit(:isim, :aciklama, malzeme_ids: [])
     end
 
   def tarif_bul

@@ -22,6 +22,12 @@
       </div>
       <br>
       <div class="form-group">
+        <%= f.collection_check_boxes :malzeme_ids, Malzeme.all, :id, :name do |t| %>
+            <% t.label(class: "form-check form-check-inline") {t.check_box(class:"form-check-input") + t.text.capitalize} %>
+        <% end %>
+      </div>
+      <br>
+      <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
           <%= f.submit class: "btn btn-primary btn-xlarge" %>
         </div>

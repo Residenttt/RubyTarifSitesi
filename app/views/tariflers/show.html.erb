@@ -13,6 +13,11 @@
   </div>
   <div class="card-body">
     <%= simple_format(@tarifler.aciklama) %>
+    <b>
+    <% if @tarifler.malzemes.any? %>
+      <p>Malzemeler: <%= render @tarifler.malzemes %> </p>
+    <% end %>
+    </b>
   </div>
   <div class="card-footer">
     <div class="row align-items-center g-1">

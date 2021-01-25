@@ -43,7 +43,9 @@
                   Malzemeler
                 </a>
                 <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                  <% if logged_in? && current_user.admin? %>
                   <li><%= link_to "Yeni Malzeme Ekle", new_malzeme_path, class: "dropdown-item" %></li>
+                  <% end %>
                   <li><%= link_to "Tüm Malzemeleri Göster", malzemes_path, class: "dropdown-item" %></li>
                 </ul>
               </li>
