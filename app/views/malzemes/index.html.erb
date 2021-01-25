@@ -1,0 +1,25 @@
+<%= render 'ortak/page_title', baslik: "Malzeme Listesi" %>
+
+<div align="center">
+  <% @malzemes.each do |mlz| %>
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-2">
+            </div>
+            <div class="col-md-8 well">
+              <h5><%= link_to mlz.name.capitalize, malzeme_path(mlz) %></h5>
+              <p><%= pluralize(mlz.tariflers.count, "Tarif") if mlz.tariflers %></p>
+              <% if logged_in? && current_user.admin?%>
+                <li><%= link_to "Malzemeyi Düzenle", malzeme_path(mlz) %></li>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <br>
+</div>
+

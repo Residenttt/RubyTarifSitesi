@@ -1,0 +1,9 @@
+<%= render 'ortak/page_title', baslik:"#{@malzeme.name}" %>
+
+<% if @malzeme.tariflers.count != 0 %>
+  <h3 align="center"><%= @malzeme.name.capitalize %> İçeren Tarifler</h3>
+  <hr>
+  <%= render '/tariflers/tarifler', obj: @malzeme.tariflers %>
+<% else %>
+  <h3 align="center">Malzemeyi içeren hiç tarif yok.</h3>
+<% end %>
