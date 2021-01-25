@@ -15,7 +15,10 @@
             <% if tarifler.malzemes.any? %>
               <p>Malzemeler: <%= render tarifler.malzemes %></p>
             <% end %>
-            <p><span class="quiet"><small><b>Paylaşım Tarihi:</b> <%= time_ago_in_words(tarifler.created_at) %></small></span></p>
+            <p><span class="quiet"><small><b>Paylaşım Tarihi:</b> <%= time_ago_in_words(tarifler.created_at)%>
+              <% if tarifler.yorumlars.count != 0 %>
+               - <%= pluralize(tarifler.yorumlars.count, "yorum") %></span></p>
+              <% end %></small>
             <% if logged_in? && (current_user == tarifler.user || current_user.admin?) %>
               <div class="col-auto">
                 <%= link_to "Tarifi düzenle", edit_tarifler_path(tarifler), class: "btn btn-info" %>

@@ -22,7 +22,7 @@
   <div class="card-footer">
     <div class="row align-items-center g-1">
       <div class="col-auto">
-        <%= link_to gravatar_for(@tarifler.user), tariflers_path %>
+        <%= link_to gravatar_for(@tarifler.user), user_path(@tarifler.user) %>
       </div>
       <div class="col-auto">
         <b>Yazar:</b> <%= link_to @tarifler.user.username.capitalize, user_path(@tarifler.user) %>
@@ -41,4 +41,48 @@
     <%= link_to "Tarifi Sil", tarifler_path(@tarifler), method: :delete, data: { confirm: "Silmek istediğinize emin misiniz?"}, class: "btn btn-danger" %>
   </div>
     <% end %>
+</div>
+<br>
+<hr>
+<% if logged_in? %>
+  <div class="row" align="center">
+    <div class="col-md-10">
+      <%= form_for([@tarifler, @yorumlar], :html => {class: "form-horizontal", role: "form"}) do |f| %>
+        <div class="form-group">
+          <b><div class="control-label col-md-2">
+            <%= f.label "Yorum Yap" %>
+          </div></b>
+          <div class="col-md-8">
+            <%= f.text_area :aciklama, rows:5, class:"form-control", placeholder: "Yorumunuzu giriniz." %>
+          </div>
+        </div>
+        <br>
+        <div class="form-group">
+          <div class="col-md-offset-2 col-md-10">
+            <%= f.submit "Yorum Gönder", class: "btn btn-primary btn-xlarge" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+<hr>
+<div class="row align-items-center justify-content-between g-2">
+ <% if @tarifler.yorumlars != 0 %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h4><b>Yorumlar:</b></h4>
+      <div id="messages">
+        <%= render partial: "yorumlars/yorumlars", object: @yorumlars %>
+      </div>
+    </div>
+  </div>
+  <% else %>
+    <div class="row align-items-center g-1">
+      <div class="col-auto">
+        <h4>Hiç yorum yapılmamış.</h4>
+      </div>
+    </div>
+  <% end %>
+
 </div>

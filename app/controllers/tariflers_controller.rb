@@ -23,7 +23,8 @@ class TariflersController < ApplicationController
   end
 
   def show
-
+    @yorumlar = Yorumlar.new
+    @yorumlars = @tarifler.yorumlars
   end
 
   def edit
