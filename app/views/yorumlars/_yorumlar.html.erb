@@ -1,0 +1,17 @@
+<div class="col-12">
+  <div class="row g-3">
+    <div class="col-auto">
+      <%= link_to gravatar_for(yorumlar.user), user_path(yorumlar.user), class: "rounded" %>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <b><%= yorumlar.user.username.capitalize %> Yorumu:</b>
+        </div>
+        <div class="card-body">
+          <%= yorumlar.aciklama %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
