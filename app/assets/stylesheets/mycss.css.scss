@@ -1,11 +1,39 @@
 // Custom bootstrap variables must be set or imported *before* bootstrap.
 @import "bootstrap";
+@import "font-awesome";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;900&display=swap');
 
 .position-relative {
     background-image: asset-url('kofte.jpg');
     background-size: cover;
 
 }
+
+input,button,body{
+    font-family: 'Inter', sans-serif, Arial !important;
+}
+
+body{
+    padding-top:62px;
+}
+.section__title{
+    position: relative;
+    padding-left:16px;line-height:1;
+    border-bottom: 1px solid #ddd;
+    padding-bottom:16px;
+    margin-bottom:16px !important;
+    &::after{
+        width:5px;
+        height:calc(100% - 12px);
+        display:block;
+        position: absolute;
+        left:0;
+        top:0;
+        content: "";
+        background-color:#444;
+    }
+}
+
 #site-ad {
     text-transform: uppercase;
     letter-spacing: -1px;
@@ -39,7 +67,7 @@ footer {
     text-decoration: none;
 
 }
-
+a{text-decoration:none !important;}
 .renkk a {
     color: #212529;
 }

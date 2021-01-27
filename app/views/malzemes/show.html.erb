@@ -1,7 +1,7 @@
 <%= render 'ortak/page_title', baslik:"#{@malzeme.name}" %>
 
 <% if @malzeme.tariflers.count != 0 %>
-  <h3 align="center"><%= @malzeme.name.capitalize %> İçeren Tarifler</h3>
+  <h3 class="section__title"><%= @malzeme.name.capitalize %> İçeren Tarifler</h3>
   <hr>
   <%= render '/tariflers/tarifler', obj: @malzeme.tariflers %>
 <% else %>

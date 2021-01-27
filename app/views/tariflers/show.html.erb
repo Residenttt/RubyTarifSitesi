@@ -12,20 +12,32 @@
     </div>
   </div>
   <div class="card-body">
-    <%= simple_format(@tarifler.aciklama) %>
-    <b>
+    <div><%= simple_format(@tarifler.aciklama) %></div>
     <% if @tarifler.malzemes.any? %>
-      <p>Malzemeler: <%= render @tarifler.malzemes %> </p>
+        <div class="row g-2">
+          <div class="col-auto">
+            <%= fa_icon "bars" %>
+            Malzemeler:
+          </div>
+          <div class="col-auto">
+            <div class="row g-1">
+              <%= render @tarifler.malzemes %>
+            </div>
+          </div>
+        </div>
     <% end %>
-    </b>
   </div>
   <div class="card-footer">
-    <div class="row align-items-center g-1">
+    <div class="row justify-content-between align-items-center">
       <div class="col-auto">
-        <%= link_to gravatar_for(@tarifler.user), user_path(@tarifler.user) %>
-      </div>
-      <div class="col-auto">
-        <b>Yazar:</b> <%= link_to @tarifler.user.username.capitalize, user_path(@tarifler.user) %>
+        <div class="row g-2 align-items-center">
+          <div class="col-auto">
+            <%= link_to gravatar_for(@tarifler.user, size: 32), user_path(@tarifler.user) %>
+          </div>
+          <div class="col-auto fw-medium">
+            <b>Yazar:</b> <%= link_to @tarifler.user.username.capitalize, user_path(@tarifler.user) %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -45,23 +57,16 @@
 <br>
 <hr>
 <% if logged_in? %>
-  <div class="row" align="center">
-    <div class="col-md-10">
+  <div class="card">
+    <div class="card-header">
+      <h5 class="mb-0">Yorum yap</h5>
+    </div>
+    <div class="card-body">
       <%= form_for([@tarifler, @yorumlar], :html => {class: "form-horizontal", role: "form"}) do |f| %>
-        <div class="form-group">
-          <b><div class="control-label col-md-2">
-            <%= f.label "Yorum Yap" %>
-          </div></b>
-          <div class="col-md-8">
-            <%= f.text_area :aciklama, rows:5, class:"form-control", placeholder: "Yorumunuzu giriniz." %>
-          </div>
-        </div>
-        <br>
-        <div class="form-group">
-          <div class="col-md-offset-2 col-md-10">
-            <%= f.submit "Yorum Gönder", class: "btn btn-primary btn-xlarge" %>
-          </div>
-        </div>
+            <div class="form-group mb-3">
+              <%= f.text_area :aciklama, rows:5, class:"form-control", placeholder: "Yorumunuzu giriniz." %>
+            </div>
+            <%= f.submit "Yorum Gönder", class: "btn btn-primary w-100" %>
       <% end %>
     </div>
   </div>
@@ -69,13 +74,13 @@
 <hr>
 <div class="row align-items-center justify-content-between g-2">
  <% if @tarifler.yorumlars != 0 %>
-  <div class="row">
-    <div class="col-md-8 col-md-offset-2">
-      <h4><b>Yorumlar:</b></h4>
+  <div>
+      <h4 class="section__title">Yorumlar:</h4>
       <div id="messages">
-        <%= render partial: "yorumlars/yorumlars", object: @yorumlars %>
+        <div class="row g-4">
+          <%= render partial: "yorumlars/yorumlars", object: @yorumlars %>
+        </div>
       </div>
-    </div>
   </div>
   <% else %>
     <div class="row align-items-center g-1">

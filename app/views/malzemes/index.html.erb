@@ -1,27 +1,31 @@
 <%= render 'ortak/page_title', baslik: "Malzeme Listesi" %>
 
-<div align="center">
+
+<ul class="list-group">
   <% @malzemes.each do |mlz| %>
-    <div class="col-12">
-      <div class="card">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-2">
-            </div>
-            <div class="col-md-8 well">
-              <h5><%= link_to mlz.name.capitalize, malzeme_path(mlz) %></h5>
-              <p><%= pluralize(mlz.tariflers.count, "Tarif") if mlz.tariflers %></p>
-              <% if logged_in? && current_user.admin?%>
-                <li><%= link_to "Malzemeyi Düzenle", edit_malzeme_path(mlz) %></li>
-              <% end %>
+    <li class="list-group-item">
+      <div class="p-2">
+
+        <div class="row g-2">
+          <div class="col">
+            <h5 class="mb-0"><%= link_to mlz.name.capitalize, malzeme_path(mlz) %></h5>
+          </div>
+          <div class="col-auto">
+            <div>
+              <%= fa_icon "bars" %>
+              <%= pluralize(mlz.tariflers.count, "Tarif") if mlz.tariflers %>
             </div>
           </div>
+          <% if logged_in? && current_user.admin?%>
+            <div class="col-auto">
+              <%= link_to "Malzemeyi Düzenle", edit_malzeme_path(mlz) %>
+            </div>
+          <% end %>
         </div>
       </div>
-    </div>
+    </li>
   <% end %>
-  <br>
-</div>
+</ul>
 <div class="d-flex justify-content-center">
   <%= pagy_bootstrap_nav(@pagy).html_safe %>
 </div>

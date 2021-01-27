@@ -1,31 +1,55 @@
-<div class="row gy-4" align="center">
+<div class="row gy-4">
 <% obj.each do |tarifler| %>
     <div class="col-12">
       <div class="card">
-        <div class="card-body">
+        <div class="card-header">
           <div class="row">
-          <div class="col-md-2">
-            <section class="yazar">
-              <%= gravatar_for(tarifler.user, size:100) %>
-            </section>
+            <div class="col">
+              <h5 class="mb-0"><%= link_to tarifler.isim, tarifler_path(tarifler) %></h5>
+            </div>
+            <div class="col-auto">
+                <small><%= fa_icon "clock-o" %> <b>Paylaşım Tarihi:</b> <%= time_ago_in_words(tarifler.created_at)%>
+                  <% if tarifler.yorumlars.count != 0 %>
+               - <%= fa_icon "comments" %> <%= pluralize(tarifler.yorumlars.count, "yorum") %>
+              <% end %>
+                </small>
+            </div>
           </div>
-          <div class="col-md-8 well">
-            <h5><%= link_to tarifler.isim, tarifler_path(tarifler) %></h5>
+        </div>
+        <div class="card-body">
             <p><%= truncate(tarifler.aciklama, length: 100) %></p>
             <% if tarifler.malzemes.any? %>
-              <p>Malzemeler: <%= render tarifler.malzemes %></p>
-            <% end %>
-            <p><span class="quiet"><small><b>Paylaşım Tarihi:</b> <%= time_ago_in_words(tarifler.created_at)%>
-              <% if tarifler.yorumlars.count != 0 %>
-               - <%= pluralize(tarifler.yorumlars.count, "yorum") %></span></p>
-              <% end %></small>
-            <% if logged_in? && (current_user == tarifler.user || current_user.admin?) %>
-              <div class="col-auto">
-                <%= link_to "Tarifi düzenle", edit_tarifler_path(tarifler), class: "btn btn-info" %>
-                <%= link_to "Tarifi Sil", tarifler_path(tarifler), method: :delete, data: { confirm: "Silmek istediğinize emin misiniz?"}, class: "btn btn-danger" %>
+              <div class="row g-2">
+                <div class="col-auto">
+                  <%= fa_icon "bars" %>
+                  Malzemeler:
+                </div>
+                <div class="col-auto">
+                  <div class="row g-1">
+                    <%= render tarifler.malzemes %>
+                  </div>
+                </div>
               </div>
             <% end %>
-          </div>
+        </div>
+        <div class="card-footer">
+          <div class="row justify-content-between align-items-center">
+            <div class="col-auto">
+              <div class="row g-2 align-items-center">
+                <div class="col-auto">
+                  <%= link_to gravatar_for(tarifler.user, size: 32), user_path(tarifler.user) %>
+                </div>
+                <div class="col-auto fw-medium">
+                  <b>Yazar:</b> <%= link_to tarifler.user.username.capitalize, user_path(tarifler.user) %>
+                </div>
+              </div>
+            </div>
+            <% if logged_in? && (current_user == tarifler.user || current_user.admin?) %>
+              <div class="col-auto">
+                <%= link_to "Tarifi düzenle", edit_tarifler_path(tarifler), class: "btn btn-outline-success" %>
+                <%= link_to "Tarifi Sil", tarifler_path(tarifler), method: :delete, data: { confirm: "Silmek istediğinize emin misiniz?"}, class: "btn btn-outline-danger" %>
+              </div>
+            <% end %>
           </div>
         </div>
       </div>

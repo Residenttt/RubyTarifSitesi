@@ -8,6 +8,7 @@ gem 'rails', '~> 6.1.1'
 gem 'bootstrap', '~> 5.0.0.beta1'
 gem 'jquery-rails'
 gem 'pagy'
+gem "font-awesome-rails"
 
 # Use Puma as the app server
 gem 'puma', '~> 5.0'
