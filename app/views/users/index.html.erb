@@ -11,6 +11,7 @@
         <h5><%= link_to user.username.capitalize, user_path(user) %></h5>
         <div><%= pluralize(user.tariflers.count, "Tarif") if user.tariflers %></div>
         <% if logged_in? && current_user.admin? && !user.admin? %>
+          <%= link_to "Üyeyi Düzenle", edit_user_path(user) %> / 
           <%= link_to "Üyeyi sil", user_path(user), method: :delete, data: {confirm: "Üyeyi ve açmış olduğu tüm tarifleri silmek istediğinizden emin misiniz?"} %>
       <% end %>
       </div>
