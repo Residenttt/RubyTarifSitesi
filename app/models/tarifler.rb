@@ -8,3 +8,5 @@ class Tarifler < ApplicationRecord
   has_many :malzemes, through: :tarif_malzemes
   has_many :yorumlars, dependent: :destroy
 end
+
+

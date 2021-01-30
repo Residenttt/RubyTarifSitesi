@@ -6,7 +6,6 @@ class YorumlarsController < ApplicationController
     @yorumlar = @tarifler.yorumlars.build(yorumlar_params)
     @yorumlar.user = current_user
     if @yorumlar.save
-      #ActionCable.server.broadcast "yorumlar", render(partial: 'yorumlars/yorumlar', object: @yorumlar)
       redirect_to tarifler_path(@tarifler)
     else
       redirect_back fallback_location: tarifler_path(@tarifler)
@@ -19,3 +18,4 @@ class YorumlarsController < ApplicationController
     params.require(:yorumlar).permit(:aciklama)
   end
 end
+

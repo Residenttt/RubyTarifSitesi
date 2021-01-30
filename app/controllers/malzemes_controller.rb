@@ -30,22 +30,18 @@ class MalzemesController < ApplicationController
   end
 
   def edit
-
   end
 
   def show
-
   end
 
   private
   def set_malzeme
     @malzeme = Malzeme.find(params[:id])
   end
-
   def malzeme_params
     params.require(:malzeme).permit(:name)
   end
-
   def require_admin
     if !logged_in? || (logged_in? and !current_user.admin? )
       redirect_to malzemes_path
